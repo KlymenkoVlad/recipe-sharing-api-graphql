@@ -2,8 +2,8 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { connect } from "mongoose";
 import dotenv from "dotenv";
-import resolvers from "./graphql/resolvers.js";
-import typeDefs from "./graphql/typeDefs.js";
+import { resolvers } from "./graphql/resolvers/index.js";
+import { typeDefs } from "./graphql/typeDefs/index.js";
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
 // your data.

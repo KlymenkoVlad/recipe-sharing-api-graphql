@@ -1,0 +1,14 @@
+type Recipe {
+  title: String
+  description: String
+  createdAt: String
+  thumbsUp: Int
+  ingredients: [String]
+  instructions: [String]
+  thumbsDown: Int
+}
+
+type Query {
+  recipe(ID: ID!): Recipe!
+  getRecipes(amount: Int): [Recipe]
+}

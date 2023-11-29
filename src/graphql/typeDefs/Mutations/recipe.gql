@@ -1,0 +1,12 @@
+input RecipeInput {
+  title: String!
+  description: String!
+  instructions: [String]!
+  ingredients: [String]!
+}
+
+type Mutation {
+  createRecipe(recipeInput: RecipeInput): Recipe!
+  deleteRecipe(ID: ID!): Boolean
+  editRecipe(ID: ID!, recipeInput: RecipeInput): Boolean
+}

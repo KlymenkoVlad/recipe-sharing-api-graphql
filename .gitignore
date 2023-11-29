@@ -9,7 +9,7 @@
 .next
 node_modules
 nodemodules 
-
+dist
 
 # testing
 /coverage
