@@ -13,6 +13,6 @@ export const signToken = (userId: string) => {
   });
 };
 
-export const verifyToken = (token: string) => {
+export const verifyToken = (token: string): string | jwt.JwtPayload => {
   return jwt.verify(token, process.env.JWT_SECRET as string);
 };

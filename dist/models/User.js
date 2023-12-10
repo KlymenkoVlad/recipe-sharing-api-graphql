@@ -10,6 +10,7 @@ const UserSchema = new Schema({
         minLength: 3,
     },
     password: { type: String, required: true },
+    recipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }],
 }, {
     timestamps: true,
 });

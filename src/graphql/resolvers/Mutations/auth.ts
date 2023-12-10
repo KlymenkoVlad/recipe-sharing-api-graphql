@@ -72,6 +72,7 @@ export const register = async (
     id: user.id,
     name: user.name,
     username: user.username,
+    recipes: [],
     password: user.password,
     token: signToken(user.id),
   };

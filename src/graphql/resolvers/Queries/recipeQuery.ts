@@ -10,3 +10,12 @@ export async function getRecipes(_: any, { amount }: { amount: number }) {
   if (!recipes) return [];
   return recipes;
 }
+
+export async function getRecipesByTitle(_: any, { title }: { title: string }) {
+  if (title.length < 3) {
+    throw new Error("Title must be at least 3 characters long");
+  }
+  const recipes = await Recipe.find({ title });
+  if (!recipes) return [];
+  return recipes;
+}

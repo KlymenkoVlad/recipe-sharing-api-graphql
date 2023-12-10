@@ -6,5 +6,6 @@ const recipeSchema = new Schema({
     instructions: [{ type: String, required: true }],
     thumbsUp: { type: Number, default: 0 },
     thumbsDown: { type: Number, default: 0 },
+    userId: { type: Schema.Types.ObjectId, ref: "User" },
 }, { timestamps: true });
 export default model("Recipe", recipeSchema);

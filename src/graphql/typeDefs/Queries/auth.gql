@@ -5,4 +5,5 @@ type User {
   createdAt: String
   updatedAt: String
   token: String
+  recipes: [Recipe]
 }
