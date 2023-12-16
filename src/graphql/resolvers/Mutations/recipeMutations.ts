@@ -1,4 +1,5 @@
 import Recipe from "../../../../models/Recipe.js";
+import authMiddleware from "../../middleware/authMiddleware.js";
 
 interface RecipeInput {
   title: string;
@@ -11,8 +12,10 @@ export async function createRecipe(
   _: any,
   {
     recipeInput: { title, description, ingredients, instructions },
-  }: { recipeInput: RecipeInput }
+  }: { recipeInput: RecipeInput },
+  context: any
 ) {
+  authMiddleware(context);
   const createdRecipe = new Recipe({
     title,
     description,
@@ -31,7 +34,12 @@ export async function createRecipe(
   };
 }
 
-export async function deleteRecipe(_: any, { ID }: { ID: string }) {
+export async function deleteRecipe(
+  _: any,
+  { ID }: { ID: string },
+  context: any
+) {
+  authMiddleware(context);
   const { deletedCount } = await Recipe.deleteOne({ _id: ID });
   return deletedCount > 0;
 }
@@ -41,8 +49,10 @@ export async function editRecipe(
   {
     ID,
     recipeInput: { title, description },
-  }: { ID: string; recipeInput: RecipeInput }
+  }: { ID: string; recipeInput: RecipeInput },
+  context: any
 ) {
+  authMiddleware(context);
   const { modifiedCount } = await Recipe.updateOne(
     { _id: ID },
     { title, description }

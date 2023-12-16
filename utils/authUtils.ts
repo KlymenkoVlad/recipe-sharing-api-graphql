@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 export const hashPassword = async (password: string) => {
   const salt = await bcrypt.genSalt(10);
@@ -13,6 +13,7 @@ export const signToken = (userId: string) => {
   });
 };
 
-export const verifyToken = (token: string): string | jwt.JwtPayload => {
-  return jwt.verify(token, process.env.JWT_SECRET as string);
+export const verifyToken = (token: string): JwtPayload | null => {
+  if (!token) return null;
+  return jwt.verify(token, process.env.JWT_SECRET as string) as JwtPayload;
 };

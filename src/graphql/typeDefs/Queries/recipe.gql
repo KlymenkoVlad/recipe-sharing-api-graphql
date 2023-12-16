@@ -9,7 +9,7 @@ type Recipe {
 }
 
 type Query {
-  recipe(ID: ID!): Recipe!
+  getRecipe(ID: ID!): Recipe!
   getRecipes(amount: Int): [Recipe]
   getRecipesByTitle(title: String): Recipe
 }
