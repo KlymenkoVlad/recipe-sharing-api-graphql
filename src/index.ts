@@ -8,6 +8,10 @@ import { resolvers } from "./graphql/resolvers/index.js";
 import { typeDefs } from "./graphql/typeDefs/index.js";
 import { verifyToken } from "../utils/authUtils.js";
 
+export interface IContext {
+  userId: string;
+}
+
 const context = async ({ req, res }) => {
   const token = req.headers.authorization || "";
 

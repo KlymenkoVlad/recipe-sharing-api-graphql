@@ -12,9 +12,6 @@ export const login = async (
   args: { loginUserInput: UserInput },
   context: any
 ) => {
-  if (!context.userId) {
-    throw new Error("Not authorized");
-  }
   const { username, password } = args.loginUserInput;
 
   const user = await User.findOne({

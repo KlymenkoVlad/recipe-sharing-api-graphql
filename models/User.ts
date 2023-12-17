@@ -5,7 +5,7 @@ export interface IUser {
   name: string;
   username: string;
   password: string;
-  recipes?: Types.ObjectId[];
+  recipes: Types.ObjectId[];
 
   createdAt: Date;
   updatedAt: Date;
@@ -22,8 +22,8 @@ const UserSchema = new Schema<IUser>(
       trim: true,
       minLength: 3,
     },
-    password: { type: String, required: true },
-    recipes: [{ type: Schema.Types.ObjectId, ref: "Recipe" }],
+    password: { type: String, required: true, minlength: 6, trim: true },
+    recipes: [{ type: Schema.Types.ObjectId, ref: "Recipe", default: [] }],
   },
   {
     timestamps: true,
